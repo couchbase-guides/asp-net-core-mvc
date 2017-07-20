@@ -1,0 +1,30 @@
+﻿@using System.Linq
+@using Microsoft.AspNetCore.Mvc.Rendering
+@model System.Collections.Generic.Dictionary<string, aspnetcorestarter.Models.Profile>
+
+@{
+    ViewBag.Title = "Home : Couchbase & ASP.NET Core Example";
+}
+
+@if (!Model.Any())
+{
+    <p>There are no people yet.</p>
+}
+
+@foreach (var item in Model)
+{
+    @Html.Partial("_profile", item)
+}
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            $(".deleteProfile").click(function(e) {
+                if (confirm("Are you sure you want to delete?")) {
+                    return true;
+                }
+                return false;
+            });
+        });
+    </script>
+}
